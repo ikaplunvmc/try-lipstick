@@ -1,0 +1,37 @@
+
+Vagrant.configure("2") do |config|
+
+  # http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20130427.box
+  config.vm.box = "centos-6.4-x86-64"
+
+  config.vm.hostname = ENV['USER'] + "-" + Time.now.strftime("%Y-%m-%d-%s")
+  config.ssh.forward_agent = true
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "lipstick"
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+  end
+
+  # Tomcat HTTP Port
+  config.vm.network :forwarded_port, host: 8080, guest: 8080
+
+  # Tomcat HTTPS Port
+  config.vm.network :forwarded_port, host: 8443, guest: 8443
+
+  # Job Tracker Port
+  config.vm.network :forwarded_port, host: 50030, guest: 50030
+
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = File.join(File.dirname(__FILE__), "cookbooks")
+    chef.add_recipe "lipstick::demo"
+    chef.json = {
+      'mysql' => {
+        'bind_address' => '127.0.0.1',
+        'server_debian_password' => 'souprsekret',
+        'server_root_password' => 'souprsekret',
+        'server_repl_password' => 'souprsekret',
+      }
+    }
+  end
+
+end
