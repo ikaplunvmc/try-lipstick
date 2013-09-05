@@ -14,7 +14,7 @@ BOXNAME="centos-6.4-x86-64"
 BOXNAME_EXISTS=`vagrant box list | grep "$BOXNAME" | wc -l`
 
 if [ $BOXNAME_EXISTS -eq 0 ]; then
-    echo "Vagrant does not have the box of $BOXNAME so downloading it nowN"
+    echo "Vagrant does not have the $BOXNAME box so downloading it now"
     vagrant box add "$BOXNAME" "http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20130427.box"
 fi
 
