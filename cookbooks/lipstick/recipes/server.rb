@@ -30,7 +30,7 @@ directory "#{node['lipstick']['git_checkout_directory']}" do
 end
 git "#{node['lipstick']['git_checkout_directory']}" do
   repository "#{node['lipstick']['git_repo']}"
-  reference "master"
+  reference "#{node['lipstick']['git_ref']}"
   action :sync
   notifies :run, "execute[build war file for tomcat]", :immediately
 end
