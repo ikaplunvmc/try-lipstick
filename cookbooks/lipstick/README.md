@@ -14,9 +14,7 @@ This cookbook has only been tested on CentOS 6, but should work on other Linux s
 
 Attributes
 ----------
-TODO: List you cookbook attributes here.
 
-e.g.
 #### lipstick::default
 <table>
   <tr>
