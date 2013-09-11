@@ -1,61 +1,66 @@
-lipstick Cookbook
+Lipstick Cookbook
 =================
-TODO: Enter the cookbook description here.
+The lipstick cookbook installs and configures the Lipstick job visualization server from Netflix.
 
-e.g.
-This cookbook makes your favorite breakfast sandwhich.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
+This cookbook has only been tested on CentOS 6, but should work on other Linux systems.
 
-e.g.
-#### packages
-- `toaster` - lipstick needs toaster to brown your bagel.
+- `java` - Needed to build the jar files
+- `mysql` - Needed if you are running the demo recipe
+- `tomcat` - To hold the web application
+
 
 Attributes
 ----------
-TODO: List you cookbook attributes here.
 
-e.g.
 #### lipstick::default
 <table>
   <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
+    <th>Key</th><th>Type</th><th>Description</th><th>Default</th>
   </tr>
   <tr>
-    <td><tt>['lipstick']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['lipstick']['git_checkout_directory']</tt>
+    </td><td>String</td>
+    <td>Directory to stage the Lipstick source code</td>
+    <td><tt>/tmp/lipstick</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['lipstick']['git_repo']</tt>
+    </td><td>String</td>
+    <td>Lipstick git repo, change to run your own fork</td>
+    <td><tt>https://github.com/Netflix/Lipstick.git</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['lipstick']['git_ref']</tt>
+    </td><td>String</td>
+    <td>Default branch/revision/ref in the git repo to checkout</td>
+    <td><tt>master</tt></td>
   </tr>
 </table>
 
 Usage
 -----
 #### lipstick::default
-TODO: Write usage instructions for each cookbook.
+Installs the Lipstick Server and a MySQL server.  This is the simpliest way to deploy, though less flexible.
 
-e.g.
-Just include `lipstick` in your node's `run_list`:
+#### lipstick::server
+Installs the Lipstick Server. If you are running a MySQL server on another host, make sure you set the
+following attributes for this node so it knows what database to connect to:
 
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[lipstick]"
-  ]
-}
-```
+    node['mysql']['server_root_password']
+    node['mysql']['bind_address']
+    node['mysql']['port']
+
+#### lipstick::mysql
+Installs MySQL and creates the necessary database that Lipstick expects.
+
+#### lipstick::demo
+Installs the all components necessary to run Lipstick and Hadoop on a single machine. This is useful for trying out Lipstick but should not be used in a production environment.  The pseudo_hadoop and centos_patch recipes are used here, and don't serve much in other contexts.
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write you change
@@ -63,6 +68,6 @@ e.g.
 5. Run the tests, ensuring they all pass
 6. Submit a Pull Request using Github
 
-License and Authors
+License
 -------------------
-Authors: TODO: List authors
+See LICENSE
