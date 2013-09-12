@@ -10,4 +10,4 @@ Vagrant plus its dependencies (VirtualBox)
 
 1. Kick off a sample pig job by running `vagrant ssh -c ./run-example-pig-script.sh`. This will execute the provided example pig script which publishes job information to Lipstick.
 
-1. Point your web browser at `http://127.0.0.1:8080/lipstick-1.0`.  You should see the Lipstick home page with your job running.  Click on this job to see indepth information about he Pig script and its associated Hadoop jobs.
+1. Point your web browser at `http://127.0.0.1:8080/lipstick-1.0`.  You should see the Lipstick home page with your job running.  Click on this job to see in-depth information about the Pig script and its associated Hadoop jobs.
