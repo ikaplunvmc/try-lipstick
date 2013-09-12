@@ -2,7 +2,7 @@
 
 set -e
 
-VAGRANT_VERSION=`vagrant -v | awk '{print $3}' | awk -F '.' '{print $2}'`
+VAGRANT_VERSION=`vagrant -v | awk '{print $NF}' | awk -F '.' '{print $2}'`
 if ! [ $VAGRANT_VERSION -gt 1 ]; then
     echo ""
     echo "ERROR: The installed Vagrant version is too low. Please install Vagrant 1.2.0 or higher."
