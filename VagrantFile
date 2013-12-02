@@ -34,7 +34,10 @@ Vagrant.configure("2") do |config|
         'server_debian_password' => 'souprsekret',
         'server_root_password' => 'souprsekret',
         'server_repl_password' => 'souprsekret',
-      }
+      },
+      'lipstick' => {
+        'git_ref' => 'c5d94d27213a6a8b94e1961ee6252d7329860bda',
+      },
     }
   end
 
