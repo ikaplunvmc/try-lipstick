@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |vb|
     vb.name = "lipstick"
-    vb.customize ["modifyvm", :id, "--memory", "2048"]
+    vb.customize ["modifyvm", :id, "--memory", "4096"]
   end
 
   # Tomcat HTTP Port
@@ -35,6 +35,11 @@ Vagrant.configure("2") do |config|
         'server_root_password' => 'souprsekret',
         'server_repl_password' => 'souprsekret',
       },
+      'lipstick' => {
+        "git_repo" => "https://github.com/mortardata/Lipstick.git",
+        "git_ref" => "upstream_pull_request_warnings",
+      },
+
     }
   end
 
