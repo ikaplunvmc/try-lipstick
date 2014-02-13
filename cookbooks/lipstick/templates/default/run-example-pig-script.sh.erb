@@ -3,5 +3,5 @@ set -e;
 
 hadoop jar /tmp/lipstick/build/lipstick-console-*-withPig.jar \
        -propertyFile <%= @demo_home_dir %>/pig.properties \
-       <%= @git_checkout %>/quickstart/test_local.pig
+       <%= @pig_script_path %>
 

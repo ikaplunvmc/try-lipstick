@@ -31,7 +31,18 @@ template "#{node['lipstick']['demo_home']}/run-example-pig-script.sh" do
   group "#{node['lipstick']['demo_user']}"
   variables ({
                :demo_home_dir => node['lipstick']['demo_home'],
-               :git_checkout => node['lipstick']['git_checkout_directory'],
+               :pig_script_path => "#{node['lipstick']['git_checkout_directory']}/quickstart/test_local.pig"
+             })
+  mode "0755"
+end
+
+template "#{node['lipstick']['demo_home']}/run-no-output-script.sh" do
+  source "run-example-pig-script.sh.erb"
+  owner "#{node['lipstick']['demo_user']}"
+  group "#{node['lipstick']['demo_user']}"
+  variables ({
+               :demo_home_dir => node['lipstick']['demo_home'],
+               :pig_script_path => "#{node['lipstick']['git_checkout_directory']}/quickstart/test_no_output.pig"
              })
   mode "0755"
 end
