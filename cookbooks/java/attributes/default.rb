@@ -22,7 +22,7 @@ default['java']['remove_deprecated_packages'] = false
 
 # default jdk attributes
 default['java']['install_flavor'] = "oracle"
-default['java']['jdk_version'] = '6'
+default['java']['jdk_version'] = '7'
 default['java']['arch'] = kernel['machine'] =~ /x86_64/ ? "x86_64" : "i586"
 
 case platform
@@ -43,6 +43,7 @@ default['java']['oracle']['accept_oracle_download_terms'] = true
 
 # jdk6 attributes
 # x86_64
+
 default['java']['jdk']['6']['x86_64']['url'] = 'http://download.oracle.com/otn-pub/java/jdk/6u33-b04/jdk-6u33-linux-x64.bin'
 default['java']['jdk']['6']['x86_64']['checksum'] = '215e38e49f7b1b8f0b66383598a51125dbaf04dbcc79de14732406df5e342fb9'
 
@@ -52,9 +53,9 @@ default['java']['jdk']['6']['i586']['checksum'] = 'bfb8f04ea18eb39a0e476b400a506
 
 # jdk7 attributes
 # x86_64
-default['java']['jdk']['7']['x86_64']['url'] = 'http://download.oracle.com/otn-pub/java/jdk/7u5-b06/jdk-7u5-linux-x64.tar.gz'
+default['java']['jdk']['7']['x86_64']['url'] = 'http://download.oracle.com/otn-pub/java/jdk/7u55-b13/jdk-7u55-linux-x64.tar.gz'
 default['java']['jdk']['7']['x86_64']['checksum'] = 'aaf0296f08007cb178ff45dea61125aedb8af0450f82e0f2fd51df5391c9e837'
 
 # i586
-default['java']['jdk']['7']['i586']['url'] = 'http://download.oracle.com/otn-pub/java/jdk/7u5-b06/jdk-7u5-linux-i586.tar.gz'
+default['java']['jdk']['7']['i586']['url'] = 'http://download.oracle.com/otn-pub/java/jdk/7u55-b13/jdk-7u55-linux-i586.tar.gz'
 default['java']['jdk']['7']['i586']['checksum'] = '422dfe67a4885d47c0053b97f4a56fb4dced60799a1bb82f8266b0745a7149f7'
